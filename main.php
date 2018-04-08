@@ -15,7 +15,7 @@
 <div  class="icon-bar" >
       <a class="active" href="main.html"><i class="fa fa-home fa-2x"></i>Home</a>
       <a href="profile.html"><i class="fa fa-user fa-2x"></i>Profile</a> 
-      <a href="inbox.html"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
+      <a href="sending message.php"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
       <a href="groups.html"><i class="fa fa-users fa-2x"></i>Groups</a>
       <a href="people.html"><i class="fa fa-user-plus fa-2x"></i>People</a>
       <a href="settings.html"><i class="fa fa-cog fa-2x"></i>Settings</a>
