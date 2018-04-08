@@ -10,7 +10,7 @@ can work correctly.
 
 //We log to the DataBase
 $conn = mysqli_connect('127.0.0.1', 'root', '');
-mysqli_select_db($conn, 'private message');
+mysqli_select_db($conn, 'studygroup');
 
 //Webmaster Email
 $mail_webmaster = 'example@example.com';
