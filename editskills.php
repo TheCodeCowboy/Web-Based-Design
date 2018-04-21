@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+		require 'connect.php';
+		require 'core.php';
+?>
 
 <html>
 <head>
@@ -14,7 +18,7 @@
 <body>
     
     <div  class="icon-bar" >
-      <a href="main.php"><i class="fa fa-home fa-2x"></i>Home</a>
+      <a href="index.php"><i class="fa fa-home fa-2x"></i>Home</a>
       <a class="active" href="profile.html"><i class="fa fa-user fa-2x"></i>Profile</a> 
       <a href="inbox.php"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
       <a href="groups.php"><i class="fa fa-users fa-2x"></i>Groups</a>
@@ -22,14 +26,32 @@
       <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Sign out</a> 
    </div>
 
-   <a href="main.html"><h1 class="title titlebg">Study Group</h1></a>
+   <a href="index.php"><h1 class="title titlebg">Study Group</h1></a>
     
+	<?php
+		$query = "SELECT * FROM `user` WHERE `username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
+		if($query_run = mysqli_query($conn, $query))
+		{
+			$row = mysqli_fetch_assoc($query_run);
+		}
+		$schoolQuery = "SELECT `name` FROM `school` WHERE `id` = '".mysqli_real_escape_string($conn, $row['school'])."'";
+		if($row['school'] != '')
+		{
+			if($squery_run = mysqli_query($conn, $schoolQuery))
+			{
+				$Srow = mysqli_fetch_assoc($squery_run);
+				$school = $Srow['name'];
+			}
+			else $school = 'School N/A';
+		}
+		else $school = 'School N/A';
+	?>
     
       <img class="profileImage" src="avatar.png"/>
       <div class="ProfileBox">
-      <h3>Name</h3>
-      <p>College</p>
-      <p>Major</p>
+      <h3><?php echo $row['username']; ?> </h3>
+      <p><?php echo $school ?></p>
+      <p><?php echo $row['First Name']." ".$row['Last Name'] ?></p>
       <a href="editprofile.php"><button>Edit Profile</button></a>
       </div>
     

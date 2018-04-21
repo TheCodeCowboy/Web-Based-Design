@@ -29,31 +29,9 @@
       <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Sign out</a> 
    </div>
 
-   <a href="main.html"><h1 class="title titlebg">Study Group</h1></a>
-    
-    
-      <img class="profileImage" src="avatar.png"/>
-
-      <div class="ProfileBox">
-      <h3>Name</h3>
-      <p>College</p>
-      <p>Major</p>
-      <a href="editprofile.html"><button>Edit Profile</button></a>
-      </div>
-
-      <a href="#InsertLinkHere"><button id="follow" class="followButton" onclick="followUnfollow()">Follow</button></a>
-
-
-   <?php /*  <a href="index.php"><i class="fa fa-home fa-2x"></i>Home</a>
-      <a class="active" href="profile.php"><i class="fa fa-user fa-2x"></i>Profile</a> 
-      <a href="inbox.php"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
-      <a href="groups.php"><i class="fa fa-users fa-2x"></i>Groups</a>
-      <a href="people.php"><i class="fa fa-user-plus fa-2x"></i>People</a>
-      <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
-    </div>
-        
-    <a href="index.php"><h1 class="title titlebg position">Study Group</h1></a>
-    <?php
+   <a href="index.php"><h1 class="title titlebg">Study Group</h1></a>
+   
+   <?php
 		$query = "SELECT * FROM `user` WHERE `username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
 		if($query_run = mysqli_query($conn, $query))
 		{
@@ -71,36 +49,62 @@
 		}
 		else $school = 'School N/A';
 	?>
-    <div class="profile">
-      <img src="avatar.png"/>
+    
+    
+      <img class="profileImage" src="avatar.png"/>
+
+      <div class="ProfileBox">
       <h3><?php echo $row['username']; ?> </h3>
       <p><?php echo $school ?></p>
       <p><?php echo $row['First Name']." ".$row['Last Name'] ?></p>
-      <hr>
-      <button>Edit profile</button>
-    </div>  */ ?>
+      <a href="editprofile.php"><button>Edit Profile</button></a>
+      </div>
+
+      <a href="#InsertLinkHere"><button id="follow" class="followButton" onclick="followUnfollow()">Follow</button></a>
+
+
+  
 
 
     <div class="skills">
     <h3>Skills</h3>
     
+	 
+	
       <table>
           <tr>
             <th>Subject</th>
             <th>Strengths</th>
             <th>Weaknesses</th>
           </tr>
+		  <?php
+		$sub_query = "SELECT `subject` FROM `taking` WHERE `user` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
+		if($sub_query_run = mysqli_query($conn, $sub_query))
+		{
+			while ($sub_row = mysqli_fetch_assoc($sub_query_run))
+			{
+				$Nsub_query = "SELECT `name` FROM `subject` WHERE `id` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
+				if($Nsub_query_run = mysqli_query($conn, $Nsub_query))
+				{
+					$Nsub_row = mysqli_fetch_assoc($Nsub_query_run);
+					$subject = $Nsub_row['name'];
+
+   ?>
           <tr>
-            <td>Subject 1</td>
+            <td><?php echo $subject; ?></td>
             <td>Strength 1, Strength2...</td>
             <td>Weakness 1, Weaknss2...</td>
           </tr>
-          <tr>
-            <td>Subject 2</td>
-            <td>Strength 1, Strength2...</td>
-            <td>Weakness 1, Weaknss2...</td>
-          </tr>
+		  
+		  <?php
+				}
+			}
+		}
+		
+		?>
         </table>
+		
+		
 
         <a href="editskills.php"><button>Edit Skills</button></a>
     </div>
