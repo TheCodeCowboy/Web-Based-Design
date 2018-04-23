@@ -100,7 +100,7 @@
 					$Nsub_row = mysqli_fetch_assoc($Nsub_query_run);
 					$subject = $Nsub_row['name'];
 
-   $strong_query = "Select `topic` FROM `strength` WHERE `Username` = '".mysqli_real_escape_string($conn, $name)."' AND `subject` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
+					$strong_query = "Select `topic` FROM `strength` WHERE `Username` = '".mysqli_real_escape_string($conn, $name)."' AND `subject` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
 					$weak_query = "Select `topic` FROM `weakness` WHERE `Username` = '".mysqli_real_escape_string($conn, $name)."' AND `subject` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
    ?>
           <tr> 

@@ -329,7 +329,7 @@ a{
     box-sizing: border-box;
     box-shadow: 5px 10px 8px #888888;
     padding-top: 100px;
-    visibility: hidden;
+    visibility: visible;
     z-index: -1;
     height: auto;
 

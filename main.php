@@ -50,7 +50,8 @@
 				{
 					$subrow = mysqli_fetch_assoc($subQuery_run);
 					?>
-   <button onclick="btnResult()"><?php echo $subrow['name']; ?></button>
+   <?php /*<button onclick="btnResult()"><?php echo $subrow['name']; ?></button> */ ?>
+			<a href = "result_box.php?subject=<?php  echo $trow['subject']; ?>"><?php echo $subrow['name']; ?> </a>
 	<?php 
 				}
 			}
@@ -62,7 +63,7 @@
 
 <div class="resultbox" id="result">
         <img src="avatar.png"/>
-        <a href="profile.php"><h3>Name</h3></a>
+        <a href="profile.php"><h3>name</h3></a>
         <p>College</p>
         <p>Major</p>
         <div class="strengths">
@@ -75,7 +76,7 @@
           <p>Topic 1</p>
           <p>Topic 2</p>
         </div>   
-</div>
+</div> 
 
 
 <script>
