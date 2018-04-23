@@ -21,9 +21,9 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 			}
 		}
 		if ($schoolID != 'NULL')
-			$query = "UPDATE `user` SET `First Name` = '".mysqli_real_escape_string($conn, $first)."', `Last Name` = '".mysqli_real_escape_string($conn, $last)."', `school` = '".mysqli_real_escape_string($conn, $schoolID)."'";
+			$query = "UPDATE `user` SET `First Name` = '".mysqli_real_escape_string($conn, $first)."', `Last Name` = '".mysqli_real_escape_string($conn, $last)."', `school` = '".mysqli_real_escape_string($conn, $schoolID)."' WHERE `username` = '".$_SESSION['user_name']."'";
 		else
-			$query = "UPDATE `user` SET `First Name` = '".mysqli_real_escape_string($conn, $first)."', `Last Name` = '".mysqli_real_escape_string($conn, $last)."', `school` = NULL";
+			$query = "UPDATE `user` SET `First Name` = '".mysqli_real_escape_string($conn, $first)."', `Last Name` = '".mysqli_real_escape_string($conn, $last)."', `school` = NULL WHERE `username` = '".$_SESSION['user_name']."'";
 		if($query_run = mysqli_query($conn, $query))
 		{
 			header('Location: Profile.php');

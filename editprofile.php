@@ -85,11 +85,60 @@
 					$Nsub_row = mysqli_fetch_assoc($Nsub_query_run);
 					$subject = $Nsub_row['name'];
 
+   $strong_query = "Select `topic` FROM `strength` WHERE `Username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `subject` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
+					$weak_query = "Select `topic` FROM `weakness` WHERE `Username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `subject` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
    ?>
-          <tr>
+          <tr> 
             <td><?php echo $subject; ?></td>
-            <td>Strength 1, Strength2...</td>
-            <td>Weakness 1, Weaknss2...</td>
+			<?php
+			if ($strong_query_run = mysqli_query($conn, $strong_query))
+					{
+						
+			?>
+            <td><?php 
+				if(mysqli_num_rows($strong_query_run) > 0)
+				{
+					while ($strongRow = mysqli_fetch_assoc($strong_query_run))
+						{
+							$strongID = $strongRow['topic'];
+							$strong_name_query = "SELECT `name` FROM `topic` WHERE `id` = '".mysqli_real_escape_string($conn, $strongID)."' AND `subject` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
+							if($strong_name_query_run = mysqli_query($conn, $strong_name_query))
+							{
+								$MightyRow = mysqli_fetch_assoc($strong_name_query_run);
+								$strength = $MightyRow['name'];  
+								echo $strength.', '?> </td>
+			<?php 
+							}
+						}
+				}
+				else
+					echo " NONE </td>";
+			}						?>
+			<?php
+			if ($weak_query_run = mysqli_query($conn, $weak_query))
+					{
+						
+			?>
+            <td><?php 
+				if(mysqli_num_rows($weak_query_run) > 0)
+				{
+					while ($weakRow = mysqli_fetch_assoc($weak_query_run))
+						{
+							$weakID = $weakRow['topic'];
+							$weak_name_query = "SELECT `name` FROM `topic` WHERE `id` = '".mysqli_real_escape_string($conn, $weakID)."' AND `subject` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
+							if($weak_name_query_run = mysqli_query($conn, $weak_name_query))
+							{
+								$InfirmRow = mysqli_fetch_assoc($weak_name_query_run);
+								$weakness = $InfirmRow['name'];  
+								echo $weakness.', '?> </td>
+			<?php 
+							}
+						}
+				}
+				else
+					echo " NONE </td>";
+			}						?></td>
+          
           </tr>
 		  
 		  <?php

@@ -66,19 +66,78 @@
             <th>Strengths</th>
             <th>Weaknesses</th>
           </tr>
+		  <?php
+		$sub_query = "SELECT `subject` FROM `taking` WHERE `user` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
+		if($sub_query_run = mysqli_query($conn, $sub_query))
+		{
+			while ($sub_row = mysqli_fetch_assoc($sub_query_run))
+			{
+				$Nsub_query = "SELECT `name` FROM `subject` WHERE `id` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
+				if($Nsub_query_run = mysqli_query($conn, $Nsub_query))
+				{
+					$Nsub_row = mysqli_fetch_assoc($Nsub_query_run);
+					$subject = $Nsub_row['name'];
+					
+					$strong_query = "Select `topic` FROM `strength` WHERE `Username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `subject` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
+					$weak_query = "Select `topic` FROM `weakness` WHERE `Username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `subject` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
+   ?>
           <tr> 
-            <td><i class="fa fa-minus" onclick="deleteSkill(this)"></i> Web based Software Development</td>
-            <td>Strength 1, Strength2</td>
-            <td>Weakness 1, Weaknss2</td>
-          <tr>
-            <td> <i class="fa fa-minus" onclick="deleteSkill(this)"></i> Subject 1</td>
-            <td>Strength 1, Strength2</td>
-            <td>Weakness 1, Weaknss2</td>
-          </tr>
-          <tr>
-            <td> <i class="fa fa-minus" onclick="deleteSkill(this)"></i> Subject 1</td>
-            <td>Strength 1, Strength2</td>
-            <td>Weakness 1, Weaknss2</td>
+            <td><a href = "dropSub.php?sub=<?php echo $sub_row['subject']; ?>" class="fa fa-minus" ></a> <?php echo $subject; ?></td>
+			<?php
+			if ($strong_query_run = mysqli_query($conn, $strong_query))
+					{
+						
+			?>
+            <td><?php 
+				if(mysqli_num_rows($strong_query_run) > 0)
+				{
+					while ($strongRow = mysqli_fetch_assoc($strong_query_run))
+						{
+							$strongID = $strongRow['topic'];
+							$strong_name_query = "SELECT `name` FROM `topic` WHERE `id` = '".mysqli_real_escape_string($conn, $strongID)."' AND `subject` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
+							if($strong_name_query_run = mysqli_query($conn, $strong_name_query))
+							{
+								$MightyRow = mysqli_fetch_assoc($strong_name_query_run);
+								$strength = $MightyRow['name'];  
+								echo $strength.', '?> </td>
+			<?php 
+							}
+						}
+				}
+				else
+					echo " NONE </td>";
+			}						?>
+			<?php
+			if ($weak_query_run = mysqli_query($conn, $weak_query))
+					{
+						
+			?>
+            <td><?php 
+				if(mysqli_num_rows($weak_query_run) > 0)
+				{
+					while ($weakRow = mysqli_fetch_assoc($weak_query_run))
+						{
+							$weakID = $weakRow['topic'];
+							$weak_name_query = "SELECT `name` FROM `topic` WHERE `id` = '".mysqli_real_escape_string($conn, $weakID)."' AND `subject` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
+							if($weak_name_query_run = mysqli_query($conn, $weak_name_query))
+							{
+								$InfirmRow = mysqli_fetch_assoc($weak_name_query_run);
+								$weakness = $InfirmRow['name'];  
+								echo $weakness.', '?> </td>
+			<?php 
+							}
+						}
+				}
+				else
+					echo " NONE </td>";
+			}						?></td>
+          <?php
+				
+				}
+			}
+		}
+		
+		?>
           </tr>
         </table>
 
