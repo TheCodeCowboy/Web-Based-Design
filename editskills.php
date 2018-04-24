@@ -22,7 +22,7 @@
       <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Sign out</a> 
    </div>
 
-   <a href="main.html"><h1 class="title titlebg">Study Group</h1></a>
+   <a href="main.php"><h1 class="title titlebg">Study Group</h1></a>
     
     
       <img class="profileImage" src="avatar.png"/>
@@ -36,50 +36,44 @@
     <div class="skills">
     <h3>Skills</h3>
 
-    <i class="fa fa-plus" onclick="addSkill()"></i>Add skill</a>
-
+    <a href="addSubject.php"><i class="fa fa-plus"></i>Add subject</a>
       <table id="skillsTable">
           <tr>
             <th>Subject</th>
             <th>Strengths</th>
             <th>Weaknesses</th>
           </tr>
-          <tr> 
-            <td><i class="fa fa-minus" onclick="deleteSkill(this)"></i> Web based Software Development</td>
-            <td>Strength 1, Strength2</td>
-            <td>Weakness 1, Weaknss2</td>
+
           <tr>
-            <td> <i class="fa fa-minus" onclick="deleteSkill(this)"></i> Subject 1</td>
-            <td>Strength 1, Strength2</td>
-            <td>Weakness 1, Weaknss2</td>
-          </tr>
-          <tr>
-            <td> <i class="fa fa-minus" onclick="deleteSkill(this)"></i> Subject 1</td>
-            <td>Strength 1, Strength2</td>
-            <td>Weakness 1, Weaknss2</td>
+            <td><i class = "fa fa-minus" onclick="deleteSubject(this)"></i> Subject 1</td>
+            <td>
+            <p> <a href="addStrength.html"><i class="fa fa-plus"></i></a></p>
+              <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Strength1</p>
+              <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Strength2</p>
+              <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Strength3</p>
+            </td>
+            <td>
+            <p> <a href="addWeakness.html"><i class="fa fa-plus"></i></a></p>
+            <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Weakness1</p>
+            <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Weakness2</p>
+            <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Weakness3</p>
+            </td>
           </tr>
         </table>
 
-        <a href="profile.php"><button>Save</button></a>
+        <a href="profile.php"><button class="editSkillsButton">Save</button></a>
 
     </div>
     
     <script type="text/javascript">
       
-        function addSkill(){
-        var rows = document.getElementById("skillsTable").rows.length;
-        var newSkill = document.getElementById("skillsTable").insertRow(rows);
-
-        for(var i=0; i<3; i++){
-          var td = newSkill.insertCell(i);
-          var input = document.createElement("input");
-          td.appendChild(input);
-        }
-      }
-
-        function deleteSkill(row){
+        function deleteSubject(row){
         var x = row.parentNode.parentNode.rowIndex;
         document.getElementById("skillsTable").deleteRow(x);
+      }
+
+      function deleteSW(p){
+             p.parentNode.remove();
       }
 
     </script>
