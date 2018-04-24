@@ -60,21 +60,34 @@
   </div>
 </div>
 
-<div class="resultbox" id="result">
-        <img src="avatar.png"/>
-        <a href="profile.php"><h3>Name</h3></a>
-        <p>College</p>
-        <p>Major</p>
-        <div class="strengths">
-          <h4>Strengths</h4>
-          <p>Topic 1</p>
-          <p>Topic 2</p>
-        </div>
-        <div class="weaknesses">
-          <h4>Weaknesses</h4>
-          <p>Topic 1</p>
-          <p>Topic 2</p>
-        </div>   
+<div class="resultsTable">
+<table id="result">
+
+<tr class="resultbox">
+<td><img src="avatar.png"/></td>
+<td>
+  <h3>Name</h3>
+  <p>College</p>
+  <p>Major</p>
+</td>
+<td>
+  <h3>Skills</h3>
+  <p>Skill 1</p>
+  <p>Skill 2</p>
+</td>
+<td>
+  <h3>Weaknesses</h3>
+  <p>Weakness 1</p>
+  <p>Weakness 2</p>
+</td>
+  
+</tr>
+
+<tr class="blankrow">
+  
+</tr>
+	
+</table>
 </div>
 
 
