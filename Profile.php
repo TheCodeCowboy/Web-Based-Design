@@ -29,6 +29,32 @@
       <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Sign out</a> 
    </div>
 
+
+  <?php <a href="main.php"><h1 class="title titlebg">Study Group</h1></a>
+    
+    
+      <img class="profileImage" src="avatar.png"/>
+
+      <div class="ProfileBox">
+      <h3>Name</h3>
+      <p>College</p>
+      <p>Major</p>
+      <a href="editprofile.html"><button>Edit Profile</button></a>
+      </div>
+
+      <a href="#InsertLinkHere"><button id="follow" class="followButton" onclick="followUnfollow()">Follow</button></a>
+
+
+   <?php /*  <a href="index.php"><i class="fa fa-home fa-2x"></i>Home</a>
+      <a class="active" href="profile.php"><i class="fa fa-user fa-2x"></i>Profile</a> 
+      <a href="inbox.php"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
+      <a href="groups.php"><i class="fa fa-users fa-2x"></i>Groups</a>
+      <a href="people.php"><i class="fa fa-user-plus fa-2x"></i>People</a>
+      <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
+    </div>
+        
+    <a href="index.php"><h1 class="title titlebg position">Study Group</h1></a>
+    <?php
    <a href="index.php"><h1 class="title titlebg">Study Group</h1></a>
    
    <?php

@@ -301,7 +301,7 @@ a{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    position: fixed;
+    position: absolute;
     display: inline-block;
 }
 
@@ -351,70 +351,49 @@ a{
     display:block;
 }
 
+.resultsTable table{
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 300px;
+    height: auto;
+    width: 795px;
+    z-index: -1;
+    visibility: hidden;
+}
+
+.resultsTable td{
+    height: auto;
+    width: 150px;
+    text-align: left;
+}
+
 .resultbox{
-    margin: 220px 0 0 300px;
     width:795px;
-    height: 120px;
-    background: white;
+    height: auto;
+    background: #ffffff;
     color: rgba(143, 193, 36, 0.8);
-    position: fixed;
     box-sizing: border-box;
     box-shadow: 5px 10px 8px #888888;
     padding-top: 100px;
-    visibility: visible;
-    z-index: -1;
-    height: auto;
 
+    z-index: -1;
+}
+
+.blankrow{
+    height: 50px;
 }
 
 .resultbox img{
+    margin-left: 20px;
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    position: absolute;
-    margin-top: -95px;
+    position: relative;
 }
 
 .resultbox h3{
-    margin-top: -95px;
-    margin-left: 150px;
-    width: auto;
-    font-size: 22px;
+    position: relative;
     color: #ff6a00;
-}
-.resultbox p{
-    margin-top: 10px;
-    margin-left: 150px;
-    width: 300px;
-    font-size: 16px;
-}
-
-.strengths h4{
-    margin-top: -130px;
-    margin-left: 450px;
-    padding: 0px;
-    color: #ff6a00;
-}
-
-.strengths p{
-    margin-top: -20px;
-    margin-bottom: 20px;
-    margin-left: 450px;
-    padding: 0px;
-    font-size: 16px;
-}
-
-.weaknesses h4{
-    margin-top: -20px;
-    margin-left: 450px;
-    color: #ff6a00;
-}
-
-.weaknesses p{
-    margin-top: -20px;
-    margin-left: 450px;
-    margin-bottom: 20px;
-    font-size: 16px;
 }
 
 .profileImage{
@@ -438,7 +417,7 @@ a{
 .followButton {
     margin-left: 270px;
     margin-top: -10px;
-    color: white;
+    color: #ffffff;
     background-color: #ff6a00;
     border: none;
     outline: none;
@@ -513,7 +492,7 @@ a{
     text-decoration: none;
 }
 
-button:hover
+.skills button:hover
 {
     cursor: pointer;
     background: #ff0000;
@@ -533,13 +512,14 @@ button:hover
     outline: none;
 }
 
-
-.skills input{
-    padding: 5px;
+.skills select{
     height: auto;
+    width: auto;
+    padding: 5px;
+    outline: none;
     border-radius:20px;
     border: 1px solid  #8FC124;
-    outline: none;
+
 }
 
 h6{
