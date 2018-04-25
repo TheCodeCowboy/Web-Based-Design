@@ -481,7 +481,7 @@ a{
 
 .skills select{
     height: auto;
-    width: 150px;
+    width: auto;
     padding: 5px;
     outline: none;
     border-radius:20px;
