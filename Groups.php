@@ -38,7 +38,7 @@
             <div class= "group" >
                 <a href = "createGroup.php" class = "button"><input type="submit" name="Create" value="Create a New Group" /></a></div>
             <div class= "group2" >
-            <a href = "NameGroup.php" class = "button"><input type="submit" name="GiveName" value="Name the group" /></a></div>
+            <a href = "NameGroup.php" class = "button"><input type="submit" name="GiveName" value="Name a group" /></a></div>
             <div class= "table">
 			<?php
 			while ($row = mysqli_fetch_assoc($query_run))
