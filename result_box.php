@@ -55,8 +55,7 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 				{
 					$subrow = mysqli_fetch_assoc($subQuery_run);
 					?>
-   <?php /*<button onclick="btnResult()"><?php echo $subrow['name']; ?></button> */ ?>
-			<a href = "result_box.php?subject=<?php  echo $trow['subject']; ?>"><?php echo $subrow['name']; ?> </a>
+					<a href = "result_box.php?subject=<?php  echo $trow['subject']; ?>"><button onclick="btnResult()"><?php echo $subrow['name']; ?></button> </a>
 	<?php 
 				}
 			}
