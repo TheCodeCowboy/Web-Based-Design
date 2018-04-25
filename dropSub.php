@@ -13,7 +13,7 @@ if($tquery_run = mysqli_query($conn, $tquery))
 {
 	while($trow = mysqli_fetch_assoc($tquery_run))
 	{
-		$topic = $trow['id'];
+		$topic = $trow['ID'];
 		
 		$Squery = "DELETE FROM `strength` WHERE `strength`.`Username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `strength`.`topic` = '".mysqli_real_escape_string($conn, $topic)."' AND `strength`.`subject` = '".mysqli_real_escape_string($conn, $subject)."'";
 		if($Squery_run = mysqli_query($conn, $Squery))

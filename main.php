@@ -50,8 +50,7 @@
 				{
 					$subrow = mysqli_fetch_assoc($subQuery_run);
 					?>
-   <?php /*<button onclick="btnResult()"><?php echo $subrow['name']; ?></button> */ ?>
-			<a href = "result_box.php?subject=<?php  echo $trow['subject']; ?>"><?php echo $subrow['name']; ?> </a>
+   <?php  ?><a href = "result_box.php?subject=<?php  echo $trow['subject']; ?>"><button onclick="btnResult()"><?php echo $subrow['name']; ?></button> </a>
 	<?php 
 				}
 			}
@@ -61,22 +60,7 @@
   </div>
 </div>
 
-<div class="resultbox" id="result">
-        <img src="avatar.png"/>
-        <a href="profile.php"><h3>name</h3></a>
-        <p>College</p>
-        <p>Major</p>
-        <div class="strengths">
-          <h4>Strengths</h4>
-          <p>Topic 1</p>
-          <p>Topic 2</p>
-        </div>
-        <div class="weaknesses">
-          <h4>Weaknesses</h4>
-          <p>Topic 1</p>
-          <p>Topic 2</p>
-        </div>   
-</div> 
+
 
 
 <script>
@@ -102,6 +86,7 @@ window.onclick = function(event) {
 
 function btnResult() {
   document.getElementById("result").style.visibility = "visible";
+  
 }
 
 </script>
