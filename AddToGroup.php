@@ -41,8 +41,10 @@
 ?>
 
             <div class= "group">
-                <input type="submit" name="Create" value="Create a New Group" />
+                <a><input type="submit" name="Create" value="Create a New Group" /></a>
             </div>
+            <div class= "group2" >
+            <a href = "NameGroup.php" class = "button"><input type="submit" name="GiveName" value="Name the group" /></a></div>
             <div class= "table">
 			<?php
 							while ($row = mysqli_fetch_assoc($query_run))
@@ -67,7 +69,10 @@
                 <tr class= "gap">
                     <th colspan = "2" ></th>
                     <tr/><tr class = "links">
-                    <th colspan= "2"><?php echo $groupName; ?></th>
+                    <th colspan= "2"><?php echo $groupName; ?>
+                    </th><tr class = "links"><th colspan= "2"><button type= "button"><a href = "#">Leave Group</a>
+                    </button>
+                    </th>
                     <tr/><tr>
                     <th rowspan= "<?php echo $mem_num+1; ?>">Members</th>
 					<?php while($mrow = mysqli_fetch_assoc($mquery_run))

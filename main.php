@@ -50,7 +50,7 @@
 				{
 					$subrow = mysqli_fetch_assoc($subQuery_run);
 					?>
-   <button onclick="btnResult()"><?php echo $subrow['name']; ?></button>
+   <?php  ?><a href = "result_box.php?subject=<?php  echo $trow['subject']; ?>"><button onclick="btnResult()"><?php echo $subrow['name']; ?></button> </a>
 	<?php 
 				}
 			}
@@ -59,6 +59,7 @@
 
   </div>
 </div>
+
 
 <div class="resultsTable">
 <table id="result">
@@ -91,6 +92,7 @@
 </div>
 
 
+
 <script>
 function dropDown() {
     document.getElementById("dropDown").classList.toggle("show");
@@ -114,6 +116,7 @@ window.onclick = function(event) {
 
 function btnResult() {
   document.getElementById("result").style.visibility = "visible";
+  
 }
 
 </script>
