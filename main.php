@@ -67,17 +67,17 @@
 <tr class="resultbox">
 <td><img src="avatar.png"/></td>
 <td>
-  <h3>Name</h3>
+  <h4>Name</h4>
   <p>College</p>
   <p>Major</p>
 </td>
 <td>
-  <h3>Skills</h3>
+  <h4>Skills</h4>
   <p>Skill 1</p>
   <p>Skill 2</p>
 </td>
 <td>
-  <h3>Weaknesses</h3>
+  <h4>Weaknesses</h4>
   <p>Weakness 1</p>
   <p>Weakness 2</p>
 </td>
