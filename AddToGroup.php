@@ -70,7 +70,7 @@
                     <th colspan = "2" ></th>
                     <tr/><tr class = "links">
                     <th colspan= "2"><?php echo $groupName; ?>
-                    </th><tr class = "links"><th colspan= "2"><button type= "button"><a href = "#">Leave Group</a>
+                    </th><tr class = "links"><th colspan= "2"><button type= "button"><a href = "leaveGroup.php?group=<?php echo $row['groups'] ?>">Leave Group</a>
                     </button>
                     </th>
                     <tr/><tr>
