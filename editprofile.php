@@ -149,7 +149,7 @@
 		?>
         </table>
 
-        <a href="editskills.php"><button>Edit Skills</button></a>
+        <a href="editskills.php"><button class="editSkillsButton">Edit Skills</button></a>
         </div>
     
 
