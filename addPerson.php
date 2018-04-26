@@ -64,17 +64,42 @@
 						$subIDquery = "SELECT `subject` FROM "
 		?>	
                 <table>
-                <tr><?php $url = "viewProfile.php?user=".$following; ?>
+                <tr class= "gap">
+                    <th colspan = "2" ></th>
+                    <tr/>
+                    <tr><?php $url = "viewProfile.php?user=".$following; ?>
                     <th>User Name</th>
                     <td><a href=<?php echo $url; ?>> "<?php echo $following; ?>" </a></td>
                     <tr/><tr>
                     <th>School Name</th>
                     <td><?php echo $school; ?></td>
-                    <tr/><tr>
-                    <th>Strength of User</th>
-                    <td>Name of the Subjects</td>
-                    </tr><tr>
-                    <th colspan="2" class = "formbox"><a href = "<?php echo "unfollow.php?user=".$following; ?>" class="button"> Unfollow </a><a href = "<?php echo "add_member.php?user=".$following."&group=".$group; ?>" class="button"> Add This User </a></th>
+                    <tr/>
+					<?php /* 
+						$sub_query = "SELECT * FROM `taking` WHERE `user` = '".mysqli_real_escape_string($conn, $following)."'";
+						if($sub_query_run = mysqli_query($conn, $sub_query))
+						{
+							while($sub_row = mysqli_fetch_assoc($sub_query_run))
+							{
+					?><tr>
+                    <th rowspan = "1">Subject</th>
+					<?php 
+						
+							
+								$subID = $sub_row['subject'];
+								$subNameQuery = "SELECT `name` FROM `subject` WHERE `ID` = '".mysqli_real_escape_string($conn, $subID)."'";
+								if($subNameRun = mysqli_query($conn, $subNameQuery))
+								{
+									$subRow = mysqli_fetch_assoc($subNameRun);
+									$subject = $subRow['name'];
+					?>
+                    <td><?php echo $subject ?></td>
+						<?php 
+								}
+							}
+						}
+						*/ ?>
+                    </tr><tr class = "links">
+                    <th><a href = "<?php echo "unfollow.php?user=".$following; ?>" class="button"> Unfollow </a></th><th><a href = "<?php echo "add_member.php?user=".$following."&group=".$group; ?>" class="button"> Add This User </a></th>
                     </tr>
                 </table>
 				<?php
