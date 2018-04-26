@@ -65,11 +65,12 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
   </div>
 </div>
 		<?php
-		
+		$used = array();
 		
 		$user_query = "SELECT `user` FROM `taking` WHERE `subject` = '".mysqli_real_escape_string($conn, $subject)."' AND `user` != '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
 		if($user_query_run = mysqli_query($conn, $user_query))
 		{
+			$go = false;
 			?> <div class="resultsTable"> 
 				<table id="result"><?php
 			$your_weak_query = "SELECT `topic` FROM `weakness` WHERE `Username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `subject` = '".mysqli_real_escape_string($conn, $subject)."'";
@@ -87,10 +88,12 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 							
 							while ($otherRow = mysqli_fetch_assoc($otherQuery_run))
 							{
+								
 								$otherName = $otherRow['Username'];
 								$otherInfoQuery = "SELECT * FROM `user` WHERE `username` = '".mysqli_real_escape_string($conn, $otherName)."'";
 								if($otherInfoQuery_run = mysqli_query($conn, $otherInfoQuery))
 								{
+									$go = true;
 									$otherInfoRow = mysqli_fetch_assoc($otherInfoQuery_run);
 									$name = $otherInfoRow['username'];
 									$schoolQuery = "SELECT `name` FROM `school` WHERE `id` = '".mysqli_real_escape_string($conn, $otherInfoRow['school'])."'";
@@ -104,6 +107,15 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 									else $school = 'School N/A';
 								}
 									else $school = 'School N/A';
+									foreach($used as $value)
+									{
+										if($value == $name)
+										{
+											$go = false;
+										}
+									}
+									if($go)
+									{
 									?>
 									
 									
@@ -182,6 +194,8 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 									
 									
 									<?php
+									array_push($used, $name);
+									}
 								}
 							}
 							
