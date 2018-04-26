@@ -70,8 +70,11 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 		$user_query = "SELECT `user` FROM `taking` WHERE `subject` = '".mysqli_real_escape_string($conn, $subject)."' AND `user` != '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
 		if($user_query_run = mysqli_query($conn, $user_query))
 		{
+			?> <div class="resultsTable"> 
+				<table id="result"><?php
 			while($userRow = mysqli_fetch_assoc($user_query_run))
 			{
+				
 				$your_weak_query = "SELECT `topic` FROM `weakness` WHERE `Username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `subject` = '".mysqli_real_escape_string($conn, $subject)."'";
 				if($your_weak_query_run = mysqli_query($conn, $your_weak_query))
 				{
@@ -80,6 +83,7 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 						$otherQuery = "SELECT `Username` FROM `strength` WHERE `topic` = '".mysqli_real_escape_string($conn, $your_weak_row['topic'])."' AND `subject` = '".mysqli_real_escape_string($conn, $subject)."'";
 						if($otherQuery_run = mysqli_query($conn, $otherQuery))
 						{
+							
 							while ($otherRow = mysqli_fetch_assoc($otherQuery_run))
 							{
 								$otherName = $otherRow['Username'];
@@ -100,14 +104,20 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 								}
 									else $school = 'School N/A';
 									?>
-									<div class="resultbox" id="result">
-										<img src="avatar.png"/>
-										<a href="profile.php"><h3><?php echo $otherInfoRow['username']; ?></h3></a>
-										<p><?php echo $school; ?></p>
-										<p><?php echo $otherInfoRow['First Name'].' '.$otherInfoRow['Last Name']; ?></p>
-										<div class="strengths">
-											<h4>Strengths</h4>
-											<?php
+									
+									
+										
+
+											<tr class="resultbox">
+												<td><img src="avatar.png"/></td>
+												<td>
+													<h3><a href="viewProfile.php?user=<?php echo $otherInfoRow['username']; ?>"><h3><?php echo $otherInfoRow['username']; ?></h3></a></h3>
+													<p><?php echo $school; ?></p>
+													<p><?php echo $otherInfoRow['First Name'].' '.$otherInfoRow['Last Name']; ?></p>
+												</td>
+												<td>
+													<h3>Strengths</h3>
+<?php
 												$strongQuery = "SELECT `topic` FROM `strength` WHERE `subject` = '".mysqli_real_escape_string($conn, $subject)."' AND `Username` = '".mysqli_real_escape_string($conn, $name)."'";
 												if($strongQuery_run = mysqli_query($conn, $strongQuery))
 												{
@@ -131,10 +141,10 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 														echo '<p>NONE</p>';
 												}
 											?>
-										</div>
-										<div class="weaknesses">
-											<h4>Weaknesses</h4>
-											<?php
+												</td>
+												<td>
+													<h3>Weaknesses</h3>
+<?php
 												$weakQuery = "SELECT `topic` FROM `weakness` WHERE `subject` = '".mysqli_real_escape_string($conn, $subject)."' AND `Username` = '".mysqli_real_escape_string($conn, $name)."'";
 												if($weakQuery_run = mysqli_query($conn, $weakQuery))
 												{
@@ -158,16 +168,29 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 														echo '<p>NONE</p>';
 												}
 											?>
-										</div>
-        
-									</div>
+												</td>
+  
+											</tr>
+
+											<tr class="blankrow">
+  
+											</tr>
+	
+										
+									
+									
+									
 									<?php
 								}
 							}
+							
 						}
 					}
 				}
+				
 			}
+			?> 		</table>
+				</div> <?php
 		}
 		
 		?>

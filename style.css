@@ -358,7 +358,6 @@ a{
     height: auto;
     width: 795px;
     z-index: -1;
-    visibility: hidden;
 }
 
 .resultsTable td{

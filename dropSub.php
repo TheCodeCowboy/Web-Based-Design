@@ -23,11 +23,12 @@ if($tquery_run = mysqli_query($conn, $tquery))
 		{}
 	}
 	//echo'here';
-	$query = "DELETE FROM `taking` WHERE `taking`.`user` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `taking`.`subject` = '".mysqli_real_escape_string($conn, $subject)."'";
+	$query = "DELETE FROM `taking` WHERE `user` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `subject` = '".mysqli_real_escape_string($conn, $subject)."'";
 	if($query_run = mysqli_query($conn, $query))
 	{
 		header('Location: editskills.php');
 	}
+	else
 	echo $query;
 }
 ?>

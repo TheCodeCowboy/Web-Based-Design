@@ -68,24 +68,7 @@
             <th>Weaknesses</th>
           </tr>
 
-<?php /*
-          <tr>
-            <td><i class = "fa fa-minus" onclick="deleteSubject(this)"></i> Subject 1</td>
-            <td>
-            <p> <a href="addStrength.html"><i class="fa fa-plus"></i></a></p>
-              <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Strength1</p>
-              <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Strength2</p>
-              <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Strength3</p>
-            </td>
-            <td>
-            <p> <a href="addWeakness.html"><i class="fa fa-plus"></i></a></p>
-            <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Weakness1</p>
-            <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Weakness2</p>
-            <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Weakness3</p>
-            </td>
-            
-            
-            */?>
+
 
 		  <?php
 		$sub_query = "SELECT `subject` FROM `taking` WHERE `user` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
@@ -93,6 +76,7 @@
 		{
 			while ($sub_row = mysqli_fetch_assoc($sub_query_run))
 			{
+				$Q = $sub_row['subject'];
 				$Nsub_query = "SELECT `name` FROM `subject` WHERE `id` = '".mysqli_real_escape_string($conn, $sub_row['subject'])."'";
 				if($Nsub_query_run = mysqli_query($conn, $Nsub_query))
 				{
@@ -109,7 +93,8 @@
 					{
 						
 			?>
-            <td><?php 
+            <td>
+			<p> <a href="addStrength.php?subject=<?php echo $sub_row['subject'] ?>"><i class="fa fa-plus"></i></a></p><?php 
 				if(mysqli_num_rows($strong_query_run) > 0)
 				{
 					while ($strongRow = mysqli_fetch_assoc($strong_query_run))
@@ -120,10 +105,10 @@
 							{
 								$MightyRow = mysqli_fetch_assoc($strong_name_query_run);
 								$strength = $MightyRow['name'];  
-								echo $strength.', '?> </td>
+								echo '<a href = "dropStrength.php?subject='.$Q.'&topic='.$strongID.'"  class = "fa fa-minus" onclick="deleteSW(this)"></a> '.$strength.', '?> 
 			<?php 
 							}
-						}
+						} ?> </td> <?php
 				}
 				else
 					echo " NONE </td>";
@@ -133,7 +118,8 @@
 					{
 						
 			?>
-            <td><?php 
+            <td>
+			<p> <a href="addWeakness.php?subject=<?php echo $sub_row['subject'] ?>""><i class="fa fa-plus"></i></a></p><?php 
 				if(mysqli_num_rows($weak_query_run) > 0)
 				{
 					while ($weakRow = mysqli_fetch_assoc($weak_query_run))
@@ -144,10 +130,10 @@
 							{
 								$InfirmRow = mysqli_fetch_assoc($weak_name_query_run);
 								$weakness = $InfirmRow['name'];  
-								echo $weakness.', '?> </td>
+								echo '<a href = "dropWeakness.php?subject='.$Q.'&topic='.$weakID.'"  class = "fa fa-minus" onclick="deleteSW(this)"></a> '.$weakness.', '?> 
 			<?php 
 							}
-						}
+						} ?> </td> <?php
 				}
 				else
 					echo " NONE </td>";
@@ -182,3 +168,21 @@
 
 </body>
 </html>
+<?php /*
+          <tr>
+            <td><i class = "fa fa-minus" onclick="deleteSubject(this)"></i> Subject 1</td>
+            <td>
+            <p> <a href="addStrength.html"><i class="fa fa-plus"></i></a></p>
+              <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Strength1</p>
+              <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Strength2</p>
+              <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Strength3</p>
+            </td>
+            <td>
+            <p> <a href="addWeakness.html"><i class="fa fa-plus"></i></a></p>
+            <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Weakness1</p>
+            <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Weakness2</p>
+            <p> <i class = "fa fa-minus" onclick="deleteSW(this)"></i> Weakness3</p>
+            </td>
+            
+            
+            */?>
