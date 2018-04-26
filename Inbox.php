@@ -24,7 +24,7 @@
 </div>
 
 <div>
-  <a href="main.php"><h1 class= "title titlebg">Study Group</h1></a>
+  <a href="index.php"><h1 class= "title titlebg">Study Group</h1></a>
 </div>
 
 

@@ -20,7 +20,7 @@
       <a href="inbox.php"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
       <a class="active" href="groups.php"><i class="fa fa-users fa-2x"></i>Groups</a>
       <a href="people.php"><i class="fa fa-user-plus fa-2x"></i>People</a>
-      <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
+      <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Sign out</a> 
 </div>
 
 	<?php
@@ -29,7 +29,9 @@
 		{
 			if(mysqli_num_rows($query_run) == 0)
 			{
-				echo 'join a group, nerd';
+				echo '<div class= "group" >
+                <a href = "createGroup.php" class = "button"><input type="submit" name="Create" value="Create a New Group" /></a></div>
+				<div class = "table"><table> <tr> <td>join a group, nerd </td> </tr> </table> </div>';
 			}
 			else{
 				
@@ -65,7 +67,7 @@
                     <th colspan = "2" ></th>
                     <tr/><tr class = "links">
                     <th colspan= "2"><?php echo $groupName; ?>
-                    </th><tr class = "links"><th colspan= "2"><button type= "button"><a href = "#">Leave Group</a>
+                    </th><tr class = "links"><th colspan= "2"><button type= "button"><a href = "leaveGroup.php?group=<?php echo $row['groups'] ?>">Leave Group</a>
                     </button>
                     </th>
                     <tr/><tr>

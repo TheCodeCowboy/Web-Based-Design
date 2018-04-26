@@ -27,7 +27,7 @@
       <a href="inbox.php"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
       <a href="groups.php"><i class="fa fa-users fa-2x"></i>Groups</a>
       <a class="active" href="people.php"><i class="fa fa-user-plus fa-2x"></i>People</a>
-      <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
+      <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Sign out</a> 
 </div>
 <?php
 		$query = "SELECT * FROM `follows` WHERE `follower` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
@@ -35,7 +35,7 @@
 		{
 			if(mysqli_num_rows($query_run) == 0)
 			{
-				echo 'get some friends, nerd';
+				echo '<div class = "table"><table> <tr> <td>get some friends, nerd </td> </tr> </table> </div>';
 			}
 			else{
 				?>

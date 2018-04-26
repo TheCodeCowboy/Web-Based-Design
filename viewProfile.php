@@ -121,10 +121,10 @@
 							{
 								$MightyRow = mysqli_fetch_assoc($strong_name_query_run);
 								$strength = $MightyRow['name'];  
-								echo $strength.', '?> </td>
+								echo $strength.', '?> 
 			<?php 
 							}
-						}
+						} ?> </td> <?php
 				}
 				else
 					echo " NONE </td>";
@@ -145,10 +145,10 @@
 							{
 								$InfirmRow = mysqli_fetch_assoc($weak_name_query_run);
 								$weakness = $InfirmRow['name'];  
-								echo $weakness.', '?> </td>
+								echo $weakness.', '?>
 			<?php 
 							}
-						}
+						}?> </td> <?php
 				}
 				else
 					echo " NONE </td>";

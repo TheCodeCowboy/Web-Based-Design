@@ -29,7 +29,7 @@
       <a href="inbox.php"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
       <a href="groups.php"><i class="fa fa-users fa-2x"></i>Groups</a>
       <a href="people.php"><i class="fa fa-user-plus fa-2x"></i>People</a>
-      <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
+      <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Sign out</a> 
     </div>
         
     <a href="index.php"><h1 class="title titlebg position">Study Group</h1></a>

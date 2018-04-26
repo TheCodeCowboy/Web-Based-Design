@@ -26,7 +26,7 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
       <a href="inbox.php"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
       <a href="groups.php"><i class="fa fa-users fa-2x"></i>Groups</a>
       <a href="people.php"><i class="fa fa-user-plus fa-2x"></i>People</a>
-      <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
+      <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Sign out</a> 
 </div>
 
 	    
@@ -72,14 +72,15 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 		{
 			?> <div class="resultsTable"> 
 				<table id="result"><?php
-			while($userRow = mysqli_fetch_assoc($user_query_run))
+			$your_weak_query = "SELECT `topic` FROM `weakness` WHERE `Username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `subject` = '".mysqli_real_escape_string($conn, $subject)."'";
+			if($your_weak_query_run = mysqli_query($conn, $your_weak_query))
 			{
-				
-				$your_weak_query = "SELECT `topic` FROM `weakness` WHERE `Username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `subject` = '".mysqli_real_escape_string($conn, $subject)."'";
-				if($your_weak_query_run = mysqli_query($conn, $your_weak_query))
+				while($your_weak_row = mysqli_fetch_assoc($your_weak_query_run))
 				{
-					while($your_weak_row = mysqli_fetch_assoc($your_weak_query_run))
-					{
+					//while($userRow = mysqli_fetch_assoc($user_query_run))
+					//{
+				
+				
 						$otherQuery = "SELECT `Username` FROM `strength` WHERE `topic` = '".mysqli_real_escape_string($conn, $your_weak_row['topic'])."' AND `subject` = '".mysqli_real_escape_string($conn, $subject)."'";
 						if($otherQuery_run = mysqli_query($conn, $otherQuery))
 						{
@@ -153,7 +154,7 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 														while($weakRow = mysqli_fetch_assoc($weakQuery_run))
 														{
 															$weak_name_query = "SELECT `name` FROM `topic` WHERE `id` = '".mysqli_real_escape_string($conn, $weakRow['topic'])."' AND `subject` = '".mysqli_real_escape_string($conn, $subject)."'";
-															if($weak_name_query_run = mysqli_query($conn, $strong_name_query))
+															if($weak_name_query_run = mysqli_query($conn, $weak_name_query))
 															{
 																$InfirmRow = mysqli_fetch_assoc($weak_name_query_run);
 																$weakness = $InfirmRow['name'];
@@ -185,7 +186,7 @@ $parts = parse_url($_SERVER['REQUEST_URI']);
 							}
 							
 						}
-					}
+					//}
 				}
 				
 			}
