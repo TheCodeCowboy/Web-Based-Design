@@ -3,6 +3,9 @@
 	<?php
 		require 'connect.php';
 		require 'core.php';
+		$parts = parse_url($_SERVER['REQUEST_URI']);
+		parse_str($parts['query'], $query);
+		$convo = $query['thread'];
 	?>
 <html>
 
@@ -108,17 +111,117 @@
 
 
 
-   
+   <div class="chatbox">
+   <?php
+   $tquery = "SELECT * FROM `convo` WHERE `id` = '".mysqli_real_escape_string($conn, $convo)."'";
+   if($tquery_run = mysqli_query($conn, $tquery))
+   {
+	   $trow = mysqli_fetch_assoc($tquery_run);
+						if($trow['groups'] != '')
+						{
+							$gquery = "SELECT * FROM `groups` WHERE `id` = '".mysqli_real_escape_string($conn, $trow['groups'])."'";
+							if($gquery_run = mysqli_query($conn, $gquery))
+							{
+								$grow = mysqli_fetch_assoc($gquery_run);
+								if($grow['name'] != '')
+								{
+									$recip = $grow['name'];
+								}
+								else
+								{
+									$recip = 'group '.$trow['groups'];
+								}
+							}
+						}
+						else if($trow['user1']==$_SESSION['user_name'])
+						{
+							$recip = $trow['user2'];
+						}
+						else
+						{
+							$recip = $trow['user1'];
+						}
+   }
+						?>
+      <h3><?php echo $recip; ?></h3>
+      <div class="chatboxMessages" id="messages">
+	  <?php
+			$message_query = "SELECT * FROM `pm` WHERE `convo` = '".mysqli_real_escape_string($conn, $convo)."'";
+			if($message_query_run = mysqli_query($conn, $message_query))
+			{
+				while($mrow = mysqli_fetch_assoc($message_query_run))
+				{
+					if($mrow['sender'] == $_SESSION['user_name'])
+					{
+						$boxtype = 'sendBox';
+						$type = 'messages send';
+						$mtype = 'sendMessage';
+					}
+					else
+					{
+						$boxtype = 'receiveBox';
+						$type = 'messages receive';
+						$mtype = 'messageReceived';
+					}
+	  ?>
+          <div id="<?php echo $boxtype; ?>" class="<?php echo $type; ?>">
+            <p id="<?php echo $mtype ?>"><?php echo $mrow['text']; ?></p>
+          </div>
+		  <?php
+				}
+			}
+		  ?>
+          </div>
+   </div>
+
+   <?php
+		$query = "SELECT * FROM `convo` WHERE `id` = '".mysqli_real_escape_string($conn, $convo)."'";
+		if($query_run = mysqli_query($conn, $query))
+		{
+			$row = mysqli_fetch_assoc($query_run);
+			if($row['groups'] != '')
+			{
+				$to = 'group';
+				$recip = $row['groups'];
+			}
+			else if($row['user1']==$_SESSION['user_name'])
+			{
+				$to = 'user2';
+				$recip = $row['user2'];
+			}
+			else
+			{
+				$to = 'user2';
+				$recip = $row['user1'];
+			}
+		?>
+  <div class="typeMessage">
+  <textarea name="message" placeholder="Type message.." id="textarea"></textarea>
+  <button type="button" id="sendButton" onclick="sendMessage('<?php echo $to ?>', '<?php echo $recip ?>')">Send</button>
+  </div>
+  <?php
+	}
+   ?>
+
+</div>
 
 <script type="text/javascript">
 
   
   function openMessage(v){
 	
+    
 	window.location.href = 'Messages.php?thread='+v;
   }
 
-  
+  function sendMessage(to, recip){
+    var message = document.getElementById("textarea").value;
+    if(message.length > 0){
+      document.getElementById("sendBox").classList.add("send");
+      document.getElementById("sendMessage").innerHTML = message;
+	  window.location.href = 'sendMessage.php?'+to+'='+recip+'&&text='+message;
+    }
+  }
 
 </script>
 

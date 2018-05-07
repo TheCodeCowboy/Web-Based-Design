@@ -530,7 +530,7 @@ h6{
 .inbox{
     position: absolute;
     width: 350px;
-    height: 650px;
+    height: 89%;
     margin-left: 80px;
     margin-top: 75px;
     background-color: #fff;
@@ -564,7 +564,6 @@ h6{
     color: #ff6a00;
     margin-top: -65px;
     margin-left: 100px;
-    margin-bottom: 0px;
 }
 
 .messagebox p{
@@ -573,14 +572,14 @@ h6{
 }
 
 .chatbox{
-    margin-left: 430px;
-    visibility: hidden;
+    position: relative;
+    right: 0;
 }
 
 .chatbox h3{
-    right: 0;
-    width: 933px;
     position: absolute;
+    right: 0;
+    width: 67.8%;
     color: #fff;
     text-align: center;
     margin-top: 70px;
@@ -589,73 +588,79 @@ h6{
 }
 
 .chatboxMessages{
+    margin-top: 112px;
     right: 0;
     position: absolute;
-    width: 950px;
-    height: 520px;
-    margin-top: 72px;
+    width: 69.2%;
+    height: 500px;
     background-color: #fff;
     border-bottom: 1.5px solid #ff6a00;
     z-index: -1;
-    overflow-x: hidden;
     overflow-y: scroll;
+    padding-bottom: 10px;
 }
 
-.send p {
-    position: absolute;
-    float: right;
-    margin-top: 50px;
-    margin-left: 510px;
-    margin-right: 20px;
+.messages{
+
+    position: relative;
     box-sizing: border-box;
-    width: 400px;
+    width: 500px;
     height: auto;
-    background-color: #8FC124;
     border: none;
     border-radius: 10px;
     color: #fff;
-    padding: 10px;
+    padding: 5px;
+    
+}
+
+.send {
+    
+    float: right;
+    margin-top: 10px;
+    margin-left: 510px;
+    margin-right: 20px;
+    background-color: #8FC124;
+    
 }
 
 .receive {
-    position: absolute;
+    
     float: left;
-    margin-top: 120px;
+    margin-top: 10px;
     margin-left: 10px;
-    margin-right: 0px;
-    box-sizing: border-box;
-    width: 400px;
-    height: auto;
+    margin-right: 20px;
     background-color: rgba(14, 52, 3, 0.9);
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    padding: 10px;
 }
+
 
 .typeMessage textarea{
     position: absolute;
-    margin-top: 600px;
-    margin-left: 10px;
-    width: 830px;
-    height: 50px;
+    margin-top: 630px;
+    margin-left: 440px;
+    width: 59%;
+    height: 70px;
     padding-top: 0px;
     border: none;
     outline: none;
     margin-bottom: 0px;
+    overflow-y: scroll;
 }
 
 .typeMessage button{
     position: absolute;
-    margin-left: 850px;
-    margin-top: 600px;
-    width: 50px;
-    height: 50px;
+    margin-left: 1300px;
+    margin-top: 630px;
+    width: 60px;
+    height: 40px;
     background-color: #ff6a00;
     color: #fff;
     border: none;
-    width: 100px;
     padding: 10px 10px;
     text-align: center;
     text-decoration: none;
+}
+
+.typeMessage button:hover{
+    background-color: #ff0000;
+    cursor: pointer;
 }
