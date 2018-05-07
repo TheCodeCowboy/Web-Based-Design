@@ -28,7 +28,6 @@
 	}
 	if($get_query_run = mysqli_query($conn, $get_query));
 	{
-		$get_row = mysqli_fetch_assoc($get_query_run);
 		$num = mysqli_num_rows($get_query_run);
 		if($num == 0)
 		{
@@ -54,7 +53,9 @@
 					}
 				}
 			}
+			$get_query_run = mysqli_query($conn, $get_query);
 		}
+		$get_row = mysqli_fetch_assoc($get_query_run);
 	}
 	$query = "INSERT INTO `pm` (`id`, `convo`, `sender`, `text`) VALUES ('0', '".mysqli_real_escape_string($conn, $get_row['id'])."', '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."', '".mysqli_real_escape_string($conn, $text)."')";
 	if($query_run = mysqli_query($conn, $query))

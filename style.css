@@ -413,17 +413,28 @@ a{
     margin-top: -140px;
 }
 
-.followButton {
-    margin-left: 270px;
-    margin-top: -10px;
-    color: #ffffff;
+.profileButton{
+    color: white;
     background-color: #ff6a00;
     border: none;
     outline: none;
-    padding: 10px 20px;
+    padding: 7px 14px;
     text-align: center;
     text-decoration: none;
- 
+    margin-top: -10px;
+}
+
+.followButton {
+    margin-left: 240px;
+}
+
+.messageButton{
+    margin-left: -3px;
+}
+
+.profileButton:hover{
+    cursor: pointer;
+    background-color: #ff0000;
 }
 
 .ProfileBox h3{
@@ -445,7 +456,7 @@ a{
     position: relative;
     margin-left: 260px;
     margin-top: -20px;
-    color: #fff;
+    color: white;
     background-color: #ff6a00;
     border: none;
     padding: 10px 15px;
@@ -453,8 +464,24 @@ a{
     text-decoration: none;
 }
 
+.ProfileBox button:hover{
+    outline: 0;
+    background: #ff0000;
+    cursor: pointer;
+}
+
 .skills{
     margin-left: 400px;
+}
+
+.skills a{
+    color: #000000;
+    cursor: pointer;
+    outline: 0;
+}
+
+.skills a:hover{
+    color: #ff0000;
 }
 
 .skills h3{
@@ -473,6 +500,7 @@ a{
     text-align: left;
     padding: 10px;
     height: auto;
+    width: 220px;
 }
 
 .skills tr:nth-child(even) {

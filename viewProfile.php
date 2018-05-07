@@ -65,13 +65,13 @@
 		if($follow_query_run = mysqli_query($conn, $follow_query))
 		{
 			if(mysqli_num_rows($follow_query_run) > 0)
-				echo '<a href="unfollow.php?user='.$name.'"><button id="follow" class="followButton" onclick="followUnfollow()">Unfollow</button></a>';
+				echo '<a href="unfollow.php?user='.$name.'"><button id="follow" class="profileButton followButton" onclick="followUnfollow()">Unfollow</button></a>';
 				
 			else
-				echo '<a href="follow.php?user='.$name.'"><button id="follow" class="followButton" onclick="followUnfollow()">Follow</button></a>';
+				echo '<a href="follow.php?user='.$name.'"><button id="follow" class="profileButton followButton" onclick="followUnfollow()">Follow</button></a>';
 		}
 	  ?>
-      
+      <a href="draftMessage.php?to=<?php echo $name ?>&&type=user2"><button class="profileButton messageButton">Message</button></a>
 
 
   
