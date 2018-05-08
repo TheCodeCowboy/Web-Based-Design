@@ -68,7 +68,7 @@
                     <tr/><tr class = "links">
                     <th colspan= "2"><?php echo $groupName; ?>
                     </th><tr class = "links"><th colspan= "2"><button type= "button"><a href = "leaveGroup.php?group=<?php echo $row['groups'] ?>">Leave Group</a>
-                    </button>
+                    </button><a href = "draftMessage.php?type=group&&to=<?php echo $row['groups']; ?>"><button class = "button">Message</button></a>
                     </th>
                     <tr/><tr>
 					<?php

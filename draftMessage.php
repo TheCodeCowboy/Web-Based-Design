@@ -145,7 +145,7 @@
    
   <div class="typeMessage">
   <textarea name="message" placeholder="Type message.." id="textarea"></textarea>
-  <button type="button" id="sendButton" onclick="sendMessage('<?php echo $type ?>', '<?php echo $To ?>')">Send</button>
+  <button type="button" id="sendButton" onclick="sendMessage('<?php echo $type; ?>', '<?php echo $To; ?>')">Send</button>
   </div>
   
 
@@ -160,12 +160,13 @@
 	window.location.href = 'Messages.php?thread='+v;
   }
 
-  function sendMessage(to, recip){
+  function sendMessage(type, To){
     var message = document.getElementById("textarea").value;
+	window.location.href = 'sendMessage.php?'+type+'='+To+'&&text='+message;
     if(message.length > 0){
       document.getElementById("sendBox").classList.add("send");
       document.getElementById("sendMessage").innerHTML = message;
-	  window.location.href = 'sendMessage.php?'+to+'='+recip+'&&text='+message;
+	  window.location.href = 'sendMessage.php?'+type+'='+To+'&&text='+message;
     }
   }
 

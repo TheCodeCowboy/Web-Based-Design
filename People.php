@@ -94,8 +94,9 @@
 						}
 						*/ ?>
                     </tr><tr class = "links">
-                    <th><a href = "<?php echo "unfollow.php?user=".$following; ?>" class="button"> Unfollow </a></th><th><a href = "<?php echo "AddToGroup.php?user=".$following; ?>" class="button"> Add To Group </a></th>
-                    </tr>
+                    <th><a href = "<?php echo "unfollow.php?user=".$following; ?>" class="button"> Unfollow </a></th><th><a href = "<?php echo "AddToGroup.php?user=".$following; ?>" class="button"> Add To Group </a>
+                    <a href = "draftMessage.php?type=user2&&to=<?php echo $following; ?>"><button class = "button">Message</button></a></th>
+					</tr>
                 </table>
 				<?php
 						
